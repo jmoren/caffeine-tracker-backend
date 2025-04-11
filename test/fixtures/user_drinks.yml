@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  drink: one
+  user: one
+  level: 1
+  consumed_at: 2025-04-11 09:31:42
+
+two:
+  drink: two
+  user: two
+  level: 1
+  consumed_at: 2025-04-11 09:31:42
