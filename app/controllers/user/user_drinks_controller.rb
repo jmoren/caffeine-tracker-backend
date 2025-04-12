@@ -43,7 +43,7 @@ class User::UserDrinksController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_user_drink
-      @user_drink = current_user.user_drinks.find(params.expect(:drink_id))
+      @user_drink = current_user.user_drinks.find(params.expect(:id))
     end
 
     # Only allow a list of trusted parameters through.

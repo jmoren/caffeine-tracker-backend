@@ -20,8 +20,6 @@ class SummaryService
     @success = false
     @error = e.message
     self
-  ensure
-    self
   end
 
   def success?

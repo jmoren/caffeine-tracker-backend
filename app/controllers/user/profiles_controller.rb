@@ -16,6 +16,6 @@ class User::ProfilesController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, user_configuration_attributes: [:threshold])
+    params.require(:user).permit(:username, user_configuration_attributes: [:threshold, :max_per_day])
   end
 end
