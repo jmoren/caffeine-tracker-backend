@@ -4,7 +4,9 @@ class UserDrink < ApplicationRecord
 
   enum :level, { full: 0, half: 1, some: 2  }
 
-  def to_json
+  validates :drink_id, :user_id, presence: true
+
+  def to_h
     {
       id: self.id,
       level: self.level,

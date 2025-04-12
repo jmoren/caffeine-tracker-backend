@@ -3,7 +3,7 @@ class Admin::ApplicationController < ::ApplicationController
 
 
   def authorize_user
-    unless current_user.roles.include?("admin")
+    unless current_user.admin?
       render json: { error: "Forbidden to access" }, status: :forbidden
     end
   end

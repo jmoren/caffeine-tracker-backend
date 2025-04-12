@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
         expires: 24.hours.from_now
       }
 
-      render json: { user: { username: user.username, email: user.email, roles: user.user_roles.map(&:role) } }, status: :ok
+      render json: { user: user.to_h }, status: :ok
     else
       render json: { error: "Invalid email or password" }, status: :unauthorized
     end

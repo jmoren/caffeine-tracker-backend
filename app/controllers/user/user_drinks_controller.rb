@@ -5,13 +5,13 @@ class User::UserDrinksController < ApplicationController
   def index
     user_drinks = current_user.user_drinks.order(consumed_at: :desc)
     grouped = user_drinks.group_by { |record| record.consumed_at.to_date }
-    parsed_data = grouped.transform_values { |records| records.map(&:to_json) }
+    parsed_data = grouped.transform_values { |records| records.map(&:to_h) }
     render json: parsed_data
   end
 
   # GET /user_drinks/1
   def show
-    render json: @user_drink.to_json
+    render json: @user_drink.to_h
   end
 
   # POST /user_drinks
@@ -19,7 +19,7 @@ class User::UserDrinksController < ApplicationController
     @user_drink = current_user.user_drinks.new(user_drink_params)
 
     if @user_drink.save
-      render json: @user_drink.to_json, status: :created
+      render json: @user_drink.to_h, status: :created
     else
       render json: @user_drink.errors, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class User::UserDrinksController < ApplicationController
   # PATCH/PUT /user_drinks/1
   def update
     if @user_drink.update(user_drink_params)
-      render json: @user_drink.to_json
+      render json: @user_drink.to_h
     else
       render json: @user_drink.errors, status: :unprocessable_entity
     end

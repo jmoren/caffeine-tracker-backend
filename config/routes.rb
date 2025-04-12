@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   end
 
   namespace :user do
+    get "profile", to: "profiles#profile"
+    patch "profile", to: "profiles#update"
+    resources :summary, only: [:index]
     resources :user_drinks, as: :records
   end
 
@@ -13,7 +16,6 @@ Rails.application.routes.draw do
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
 
-  get    "/profile", to: "profiles#show"
   post   "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 

@@ -19,9 +19,9 @@ class Admin::DrinksController < Admin::ApplicationController
     @drink = Drink.new(drink_params)
 
     if @drink.save
-      render json: @drink, status: :created, location: @drink
+      render json: @drink, status: :created
     else
-      render json: @drink.errors, status: :unprocessable_entity
+      render json: @drink.errors, status: :unprocessable_content
     end
   end
 
@@ -30,7 +30,7 @@ class Admin::DrinksController < Admin::ApplicationController
     if @drink.update(drink_params)
       render json: @drink
     else
-      render json: @drink.errors, status: :unprocessable_entity
+      render json: @drink.errors, status: :unprocessable_content
     end
   end
 
